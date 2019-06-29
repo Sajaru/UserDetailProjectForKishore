@@ -99,7 +99,7 @@ public class UserDOBController {
 	     String nextYear=Integer.toString(Integer.parseInt(currentyear)+1);
 	     String nextYearBirthdayDayStr=nextYear+"-"+BirthMonth+"-"+BirthDay;
 	     System.out.println("nextYearBirthdayDayStr" + nextYearBirthdayDayStr);
-	     Date nextYearBirthdayDay=new SimpleDateFormat("yyyy-mm-dd").parse(nextYearBirthdayDayStr);
+	     Date nextYearBirthdayDay=new SimpleDateFormat("yyyy-MM-dd").parse(nextYearBirthdayDayStr);
 	     long timeToNextYearBirthDay = nextYearBirthdayDay.getTime() - presentDate.getTime();
 	     int daysToNextYearBirthDay = (int) (timeToNextYearBirthDay / (1000*60*60*24));
 		 System.out.println("daysToNextYearBirthDay" + daysToNextYearBirthDay);
