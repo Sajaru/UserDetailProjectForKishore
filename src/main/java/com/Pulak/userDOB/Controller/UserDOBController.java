@@ -61,11 +61,11 @@ public class UserDOBController {
 		}
 		int daystoBday=daystoBirthday(requestedUser.getDateofBirth());
 		if (daystoBday==0) {
-			greeting="hello "+username+".Happy Birthday :)";
+			greeting="Hello "+username+" .Happy Birthday :)";
 			return new ResponseEntity<>(greeting,HttpStatus.OK);
 		}
 		else
-			greeting="Hello "+username+".Your Birthday is in "+daystoBday + " days";
+			greeting="Hello "+username+" .Your Birthday is in "+daystoBday + " days";
 		
 		return new ResponseEntity<>(greeting,HttpStatus.OK);
 	}
