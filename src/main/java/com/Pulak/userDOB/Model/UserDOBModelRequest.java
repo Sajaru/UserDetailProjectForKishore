@@ -2,12 +2,12 @@ package com.Pulak.userDOB.Model;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class userDOBModelRequest {
+public class UserDOBModelRequest {
 	
 	@NotNull
 	@Past

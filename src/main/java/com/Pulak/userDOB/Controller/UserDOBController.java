@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Pulak.userDOB.Dao.UserDao;
 import com.Pulak.userDOB.Model.UserDaoModel;
-import com.Pulak.userDOB.Model.userDOBModelRequest;
+import com.Pulak.userDOB.Model.UserDOBModelRequest;
 
 @RestController
 @RequestMapping("/hello")
@@ -31,12 +31,12 @@ public class UserDOBController {
 
 	@PutMapping(path = "/{username}", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<?> createOrUpdateUser(@PathVariable  String username,
-			@Valid @RequestBody userDOBModelRequest dob) {
+			@Valid @RequestBody UserDOBModelRequest dob) {
 		
 		if(!username.matches("^[a-zA-Z]*$")) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
 		}
-		Date dateOfBirth = (Date) dob.getDateOfBirth();
+		Date dateOfBirth = dob.getDateOfBirth();
 		UserDaoModel userDaoModel=new UserDaoModel();
 		userDaoModel.setUsername(username);
 		userDaoModel.setDateofBirth(dateOfBirth);
@@ -48,7 +48,7 @@ public class UserDOBController {
 	@GetMapping(path = "/{username}", produces = { MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<?> sayHelloToUser(@PathVariable String username) throws ParseException {
 		
-		String greeting="";
+		String greeting;
 		if(!username.matches("^[a-zA-Z]*$")) {
 			greeting="username contains characters other than letter";
 			return new ResponseEntity<>(greeting,HttpStatus.BAD_REQUEST); 
